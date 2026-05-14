@@ -1,0 +1,396 @@
+<style>/* General Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f0f0f0;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #3498db;
+    }
+    
+    a:hover {
+        color: #2980b9;
+    }
+    
+    
+/* Hamburger Menu */
+.menu-btn {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-btn-bar {
+    width: 100%;
+    height: 3px;
+    background-color: whitesmoke;
+    transition: all 0.3s ease;
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links.active {
+    display: flex; /* Show links when active */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: flex; /* Show hamburger menu on small screens */
+    }
+
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        gap: 10px;
+        background-color: #333; 
+        position: absolute;
+        top: 60px; 
+        right: 20px; 
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .navbar {
+        flex-direction: column; 
+    }
+}
+
+    
+    /* Contact Us Section */
+    .contact-us {
+        background-color: white;
+        padding: 60px 20px;
+    }
+    
+    .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .contact-us h1 {
+        font-size: 3rem;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .contact-us p {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #777;
+        margin-bottom: 50px;
+    }
+    
+    /* Contact Info Styles */
+    .contact-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+    
+    .info-item {
+        flex-basis: 30%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .info-item h3 {
+        font-size: 1.6rem;
+        color: #3498db;
+        margin-bottom: 10px;
+    }
+    
+    .info-item p {
+        font-size: 1.1rem;
+        color: #777;
+    }
+    
+    /* Contact Form Styles */
+    .contact-form {
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-group label {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: white;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+    
+    .btn-submit {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        align-self: center;
+        transition: background-color 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+        background-color: #2980b9;
+    }
+    
+    /* Footer Styles */
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .footer-content {
+        margin-bottom: 20px;
+    }
+    
+    .website__rights {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .footer-links li a {
+        font-size: 1rem;
+        color: white;
+    }
+    
+    .footer-links li a:hover {
+        color: #3498db;
+    }
+    
+    .social__media {
+        margin-top: 20px;
+    }
+    
+    .social__icons a {
+        margin: 0 10px;
+    }
+    
+    .social__icons img {
+        transition: transform 0.3s ease;
+    }
+    
+    .social__icons img:hover {
+        transform: scale(1.1);
+    }
+
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-info {
+            flex-direction: column;
+            gap: 30px;
+        }
+    
+        .navbar {
+            flex-direction: column;
+        }
+    
+        .nav-links {
+            flex-direction: column;
+            gap: 10px;
+        }
+    
+        .info-item {
+            flex-basis: 100%;
+        }
+    
+        .contact-form {
+            padding: 20px;
+        }
+    }
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ADVENTURE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="adventure_icon.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">ADVENTURE</h1> 
+        <div class="menu-btn">
+            <div class="menu-btn-bar"></div>
+            <div class="menu-btn-bar"></div>
+            <div class="menu-btn-bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li> 
+            <li><a href="tours.html">Tours</a></li> 
+            <li><a href="explore.html">Explore</a></li> 
+            <li><a href="about.html">About</a></li> 
+            <li class="ctn"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+   <!-- Contact Us Section -->
+   <section id="contact" class="contact-us">
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have questions, feedback, or need assistance, feel free to reach out to us using any of the methods below.</p>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="info-item">
+                <h3>Email Us</h3>
+                <p><a href="mailto:contact@aslamadeniyi41@gmail.com">contact@abdulkhaliqsadventures.com</a></p>
+            </div>
+
+            <div class="info-item">
+                <h3>Call Us</h3>
+                <p>+2349026713072 or +23438447375</p>
+            </div>
+
+            <div class="info-item">
+                <h3>Visit Us</h3>
+                <p>Abdulkhaliq's World Of Adventures</p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+   <!--==FOOTER==-->
+<footer>
+    <div class="footer-content">
+        <p class="website__rights">&copy; 2024 Adventure. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="social__icons">
+                <a href="https://www.facebook.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/b8/d6/9b/b8d69bfad379fbc0c7163b08e2928f67.jpg" alt="facebook" width="30" height="30">
+                </a>
+                <a href="https://www.whatsapp.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/23/ae/3b/23ae3be4e67154cf021f16ed562fe7b8.jpg" alt="whatsapp" width="30" height="30">
+                </a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/19/42/d5/1942d5deb0f788e6228054cd92767ff6.jpg" alt="instagram" width="30" height="30">
+                </a>
+                <a href="https://www.tiktok.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/48/2b/56/482b56e3b80efad273b74667c4dbd0eb.jpg" alt="tiktok" width="30" height="30">
+                </a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+   const navLinks = document.querySelector('.nav-links');
+
+   menuBtn.addEventListener('click', () => {
+     menuBtn.classList.toggle('active');
+     navLinks.classList.toggle('active');
+   });
+ </script>
+
+</body>
+</html>

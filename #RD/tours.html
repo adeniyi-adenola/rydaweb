@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours - ADVENTURE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="adventure_icon.png" type="image/x-icon">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif; 
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .active {
+            color: #fc036b;
+            font-weight: bold;
+        }
+
+        body, html {
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 20px;
+            color: whitesmoke;
+            background-color: rgba(72, 72, 114, 0.8);
+            z-index: 10;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 30px;
+        }
+
+        .nav-links a {
+            color: whitesmoke;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fc036b;
+        }
+
+        .nav-links li.ctn a:hover {
+            color: #ffcc00;
+        }
+
+        .ctn {
+            padding: 8px 15px;
+            background-color: #fc036b;
+            border-radius: 30px;
+            color: whitesmoke;
+            transition: background-color 0.3s;
+        }
+
+        .ctn:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Hamburger Menu */
+        .menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .menu-btn-bar {
+            width: 100%;
+            height: 3px;
+            background-color: whitesmoke;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn.active .menu-btn-bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-btn.active .menu-btn-bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active .menu-btn-bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .menu-btn.active {
+            background-color: rgba(72, 72, 114, 0.7);
+            border-radius: 5px;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: #484872;
+                text-align: center;
+                border-bottom-right-radius: 30%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.website__rights {
+    margin: 10px 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #1abc9c;
+}
+
+.social__media {
+    display: flex;
+    justify-content: center;
+}
+
+.social__media--wrap {
+    display: flex;
+}
+
+.social__icons {
+    display: flex;
+}
+
+.social__icons a {
+    margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links li {
+        margin: 5px 0;
+    }
+
+    .social__icons a {
+        margin: 0 5px;
+    }
+}
+
+        /* Hero Header Styles */
+        .hero-header {
+            background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 100%;
+            height: 940px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header {
+            color: white;
+            margin: 0 100px;
+        }
+
+        .header h1 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 100px;
+            line-height: 100px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+
+        .header h2 {
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .header h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Tour Menu Styles */
+        .all-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .menu {
+            display: block;
+            margin: 15px;
+            text-decoration: none;
+            width: 285px;
+            height: 400px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 20px 20px 50px 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu .explain {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+
+        .menu .explain h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .menu .explain h1 {
+            font-family: 'Antonio', sans-serif;
+            line-height: 35px;
+        }
+
+        /* Background images for each menu item */
+        .menu:nth-child(1) {
+            background-image: url(https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=704&q=80);
+        }
+
+        .menu:nth-child(2) {
+            background-image: url(https://images.unsplash.com/photo-1559767180-47d8f4919e5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80);
+        }
+
+        .menu:nth-child(3) {
+            background-image: url(https://images.unsplash.com/photo-1567994200289-a98293394b69?ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1 class="logo">ADVENTURE</h1> 
+        <div class="menu-btn">
+            <div class="menu-btn-bar"></div>
+            <div class="menu-btn-bar"></div>
+            <div class="menu-btn-bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="home.html">Home</a></li> 
+            <li><a href="tours.html">Tours</a></li> 
+            <li><a href="explore.html">Explore</a></li> 
+            <li><a href="about.html">About</a></li> 
+            <li class="ctn"><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-header">
+        <div class="header">
+            <h2>Travel the World</h2>
+            <h1>EXPLORE AMAZING PLACES</h1>
+            <h3> <h3>We seek to provide the most authentic content from athletes, adventures,<br>explorers and travellers around the world. Our long-term mission is to educate,<br>inspire and enable all people to experience & protect wilderness.</h3> </h3>
+        </div>
+    </div>
+
+    <div class="all-menu">
+        <a class="menu" href="https://www.google.com/maps/place/Playa+de+Los+Lances/@36.0151144,-5.5341475,14z/data=!4m5!3m4!1s0xd0c8e9f30ec9259:0xdc406a749980f1ea!8m2!3d36.0351695!4d-5.623453" style="display: inline-block; background-image: url(https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=704&q=80); background-size: cover;">
+            <div class="explain">
+                <h2>Tarifa - Spain</h2>
+				<h1>LOS LANCES<br>BEACH</h1>
+            </div>
+        </a>
+        <a class="menu" href="https://www.google.com/maps/place/Marrakesh,+Morocco/@31.6363065,-8.0601948,12.25z/data=!4m5!3m4!1s0xdafee8d96179e51:0x5950b6534f87adb8!8m2!3d31.6294723!4d-7.9810845" style="display: inline-block; background-image: url(https://images.unsplash.com/photo-1559767180-47d8f4919e5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80); background-size: cover;">
+            <div class="explain">
+                <h2>Sahara Desert - Morocco</h2>
+				<h1>MARRAKECH<br>MERZOUGA</h1>
+            </div>
+       
+        <a class="menu" href="https://www.google.com/maps/place/G%C3%B6reme,+50180+G%C3%B6reme%2FNev%C5%9Fehir+Merkez%2FNev%C5%9Fehir,+Turkey/@38.6430719,34.8201342,15z/data=!3m1!4b1!4m5!3m4!1s0x152a6879d36bd1ab:0x466c4e17a23fae50!8m2!3d38.643056!4d34.828889" style="display: inline-block;  background-image: url(https://images.unsplash.com/photo-1567994200289-a98293394b69?ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60); background-size: cover;">
+            <div class="explain">
+                <h2>Cappadocia - Turkey</h2>
+				<h1>GOREME<br>VALLEY</h1>
+            </div>
+        </a>
+    </div>
+
+   <!--==FOOTER==-->
+<footer>
+    <div class="footer-content">
+        <p class="website__rights">&copy; 2024 Adventure. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="social__icons">
+                <a href="https://www.facebook.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/b8/d6/9b/b8d69bfad379fbc0c7163b08e2928f67.jpg" alt="facebook" width="30" height="30">
+                </a>
+                <a href="https://www.whatsapp.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/23/ae/3b/23ae3be4e67154cf021f16ed562fe7b8.jpg" alt="whatsapp" width="30" height="30">
+                </a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/19/42/d5/1942d5deb0f788e6228054cd92767ff6.jpg" alt="instagram" width="30" height="30">
+                </a>
+                <a href="https://www.tiktok.com/yourprofile" target="_blank">
+                    <img src="https://i.pinimg.com/564x/48/2b/56/482b56e3b80efad273b74667c4dbd0eb.jpg" alt="tiktok" width="30" height="30">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

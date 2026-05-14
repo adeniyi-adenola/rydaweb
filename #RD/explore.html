@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore | Adventure</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="adventure_icon.png" type="image/x-icon">
+</head>
+<style>
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.explore-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #fff;
+  margin-top: 100px;
+}
+
+.explore-container h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.explore-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+
+/* Explore Grid */
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.explore-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.explore-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.explore-item h2 {
+  margin: 20px 0 10px;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.explore-item p {
+  font-size: 1rem;
+  color: #555;
+  padding: 0 15px 20px;
+}
+
+.explore-item:hover {
+  transform: translateY(-10px);
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.active {
+  color: #fc036b;
+  font-weight: bold;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  color: whitesmoke;
+  background-color: rgba(72, 72, 114, 0.8);
+  z-index: 10;
+}
+
+.logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 30px;
+}
+
+.nav-links a {
+  color: whitesmoke;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fc036b;
+}
+
+.nav-links li.ctn a:hover {
+  color: #ffcc00;
+}
+
+.ctn {
+  padding: 8px 15px;
+  background-color: #fc036b;
+  border-radius: 30px;
+  color: whitesmoke;
+  transition: background-color 0.3s;
+}
+
+.ctn:hover {
+  background-color: #ffcc00;
+}
+
+/* Hamburger Menu */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.menu-btn-bar {
+  width: 100%;
+  height: 3px;
+  background-color: whitesmoke;
+  transition: all 0.3s ease;
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-btn-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 850px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #484872;
+    text-align: center;
+    border-bottom-right-radius: 30%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.website__rights {
+  margin: 10px 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-links li {
+  margin: 0 15px;
+}
+
+.footer-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #1abc9c;
+}
+
+.social__media {
+  display: flex;
+  justify-content: center;
+}
+
+.social__media--wrap {
+  display: flex;
+}
+
+.social__icons {
+  display: flex;
+}
+
+.social__icons a {
+  margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links li {
+    margin: 5px 0;
+  }
+
+  .social__icons a {
+    margin: 0 5px;
+  }
+}
+</style>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1 class="logo">ADVENTURE</h1>
+    <ul class="nav-links">
+      <li class="active"><a href="home.html">Home</a></li>
+      <li><a href="tours.html">Tours</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="ctn"><a href="contact.html">Contact</a></li>
+    </ul>
+    <!-- Hamburger menu icon -->
+    <div class="menu-btn">
+      <div class="menu-btn-bar"></div>
+      <div class="menu-btn-bar"></div>
+      <div class="menu-btn-bar"></div>
+    </div>
+  </nav>
+
+  <section class="explore-section">
+    <div class="explore-container">
+      <h1>Explore the Adventure</h1>
+      <p>Discover the most exciting places and adventures we have in store for you!</p>
+      
+      <div class="explore-grid">
+        <div class="explore-item">
+          <img src="https://i.pinimg.com/564x/a1/45/39/a14539c6df04db10ab052e918d4ab36e.jpg" alt="Mountains">
+          <h2>Mountains</h2>
+          <p>Hike through the beautiful mountainous terrains.</p>
+        </div>
+        
+        <div class="explore-item">
+          <img src="https://i.pinimg.com/474x/0a/a2/d5/0aa2d5d7e8b06d22808bf49ae9b56a60.jpg" alt="Beaches">
+          <h2>Beaches</h2>
+          <p>Relax on the sunny shores of exotic beaches.</p>
+        </div>
+        
+        <div class="explore-item">
+          <img src="https://i.pinimg.com/236x/ad/30/90/ad3090e17eb7ecd3697906a3597b1845.jpg" alt="Forest">
+          <h2>Forest</h2>
+          <p>Experience the serenity of vast forests.</p>
+        </div>
+        
+        <div class="explore-item">
+          <img src="https://i.pinimg.com/236x/e4/90/dd/e490ddb8eb734bff18986abaab754baa.jpg" alt="Desert">
+          <h2>Desert</h2>
+          <p>Embark on a desert safari and feel the thrill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+   <!--==FOOTER==-->
+<footer>
+  <div class="footer-content">
+      <p class="website__rights">&copy; 2024 Adventure. All rights reserved.</p>
+      <ul class="footer-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+  </div>
+  <div class="social__media">
+      <div class="social__media--wrap">
+          <div class="social__icons">
+              <a href="https://www.facebook.com/yourprofile" target="_blank">
+                  <img src="https://i.pinimg.com/564x/b8/d6/9b/b8d69bfad379fbc0c7163b08e2928f67.jpg" alt="facebook" width="30" height="30">
+              </a>
+              <a href="https://www.whatsapp.com/yourprofile" target="_blank">
+                  <img src="https://i.pinimg.com/564x/23/ae/3b/23ae3be4e67154cf021f16ed562fe7b8.jpg" alt="whatsapp" width="30" height="30">
+              </a>
+              <a href="https://www.instagram.com/yourprofile" target="_blank">
+                  <img src="https://i.pinimg.com/564x/19/42/d5/1942d5deb0f788e6228054cd92767ff6.jpg" alt="instagram" width="30" height="30">
+              </a>
+              <a href="https://www.tiktok.com/yourprofile" target="_blank">
+                  <img src="https://i.pinimg.com/564x/48/2b/56/482b56e3b80efad273b74667c4dbd0eb.jpg" alt="tiktok" width="30" height="30">
+              </a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
+
+  
